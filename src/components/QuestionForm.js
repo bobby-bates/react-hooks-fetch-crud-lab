@@ -10,6 +10,7 @@ function QuestionForm({ onAddQuestion }) {
     correctIndex: 0,
   });
 
+  // NOTE: General change function that handles different inputs
   function handleChange(event) {
     setFormData({
       ...formData,
@@ -20,20 +21,12 @@ function QuestionForm({ onAddQuestion }) {
   function handleSubmit(e) {
     e.preventDefault();
     console.log('formData before fetch:', formData)
-    // debugger
 
     fetch('http://localhost:4000/questions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      // body: JSON.stringify(formData)
       body: JSON.stringify({
         prompt: formData.prompt,
-        // answers: [
-        //   { 0: formData.answer1 },
-        //   { 1: formData.answer2 },
-        //   { 2: formData.answer3 },
-        //   { 3: formData.answer4 },
-        // ],
         answers: [
           formData.answer1,
           formData.answer2,

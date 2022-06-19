@@ -65,17 +65,6 @@
         "controlled"
       ],
       "correctIndex": 1
-    },
-    {
-      "prompt": "wat",
-      "answers": [
-        "one",
-        "two",
-        "three",
-        "four"
-      ],
-      "correctIndex": 1,
-      "id": 7
     }
   ]
 }

@@ -13,7 +13,18 @@ function App() {
       .then(questions => setQuestions(questions))
   }, [])
 
-  const handleAddQuestion = newQuestion => setQuestions([...questions, newQuestion])
+  const handleAddQuestion = newQuestion => {
+    setQuestions([...questions, newQuestion])
+    setPage('List')
+  }
+
+  const handleDeleteQuestion = deletedQuestion => {
+    setQuestions(questions.filter(question => question.id !== deletedQuestion.id))
+    // Remove question from list before alert plays:
+    setTimeout(() => {
+      alert('Question Deleted!')
+    }, 0)
+  }
 
   return (
     <main>
@@ -21,7 +32,10 @@ function App() {
       {page === "Form" ? (
         <QuestionForm onAddQuestion={handleAddQuestion}/>
       ) : (
-        <QuestionList questions={questions}/>
+        <QuestionList
+          questions={questions}
+          onDeleteQuestion={handleDeleteQuestion}
+        />
       )
       }
     </main>
