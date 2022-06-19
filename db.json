@@ -68,11 +68,13 @@
     },
     {
       "prompt": "wat",
-      "answer1": "a",
-      "answer2": "s",
-      "answer3": "d",
-      "answer4": "f",
-      "correctIndex": "1",
+      "answers": [
+        "one",
+        "two",
+        "three",
+        "four"
+      ],
+      "correctIndex": 1,
       "id": 7
     }
   ]

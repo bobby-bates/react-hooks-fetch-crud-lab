@@ -19,7 +19,7 @@ function QuestionForm({ onAddQuestion }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(formData)
+    console.log('formData before fetch:', formData)
     // debugger
 
     fetch('http://localhost:4000/questions', {
@@ -28,18 +28,24 @@ function QuestionForm({ onAddQuestion }) {
       // body: JSON.stringify(formData)
       body: JSON.stringify({
         prompt: formData.prompt,
+        // answers: [
+        //   { 0: formData.answer1 },
+        //   { 1: formData.answer2 },
+        //   { 2: formData.answer3 },
+        //   { 3: formData.answer4 },
+        // ],
         answers: [
-          { 0: formData.answer1 },
-          { 1: formData.answer2 },
-          { 2: formData.answer3 },
-          { 3: formData.answer4 },
+          formData.answer1,
+          formData.answer2,
+          formData.answer3,
+          formData.answer4
         ],
-        correctIndex: formData.correctIndex
+        correctIndex: parseInt(formData.correctIndex)
       })
     })
       .then(r => r.json())
       .then(newQuestion => {
-        console.log(newQuestion)
+        console.log('newQuestion after fetch:', newQuestion)
         onAddQuestion(newQuestion)
       })
   }
