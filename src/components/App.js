@@ -15,15 +15,25 @@ function App() {
 
   const handleAddQuestion = newQuestion => {
     setQuestions([...questions, newQuestion])
-    setPage('List')
+    // setPage('List')
+    
+  }
+
+  const handleNewCorrectIndex = (updatedQuestion) => {
+    setQuestions(questions.map(question => {
+      return question.id === updatedQuestion.id ? updatedQuestion : question
+    }))
+    setTimeout(() => {
+      console.log(questions)
+    }, 0); 
   }
 
   const handleDeleteQuestion = deletedQuestion => {
     setQuestions(questions.filter(question => question.id !== deletedQuestion.id))
     // Remove question from list before alert plays:
-    setTimeout(() => {
-      alert('Question Deleted!')
-    }, 0)
+    // setTimeout(() => {
+    //   alert('Question Deleted!')
+    // }, 0)
   }
 
   return (
@@ -34,6 +44,7 @@ function App() {
       ) : (
         <QuestionList
           questions={questions}
+          onNewCorrectIndex={handleNewCorrectIndex}
           onDeleteQuestion={handleDeleteQuestion}
         />
       )

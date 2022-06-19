@@ -20,7 +20,7 @@ function QuestionForm({ onAddQuestion }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('formData before fetch:', formData)
+    // console.log('formData before fetch:', formData)
 
     fetch('http://localhost:4000/questions', {
       method: 'POST',
@@ -38,7 +38,7 @@ function QuestionForm({ onAddQuestion }) {
     })
       .then(r => r.json())
       .then(newQuestion => {
-        console.log('newQuestion after fetch:', newQuestion)
+        // console.log('newQuestion after fetch:', newQuestion)
         onAddQuestion(newQuestion)
       })
   }
